@@ -1,10 +1,11 @@
-mod engine;
-mod app;
-use engine::simulation::simulations::Simulations;
-use app::running::Running;
+//mod engine;
+//mod app;
+mod graphics;
+////use engine::simulation::simulations::Simulations;
+//use app::running::Running;
+
+use graphics::renders::render_window::mains;
 
 fn main() {
-    Running::new(
-        Simulations::new()
-    ).run();
+    mains();
 }
