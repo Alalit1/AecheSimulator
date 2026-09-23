@@ -6,4 +6,5 @@ pub struct BodyStatusData {
     pub resource: Resource,
     pub mass: f32,
     
+    
 }
