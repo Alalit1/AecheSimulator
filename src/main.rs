@@ -1,14 +1,13 @@
 //mod engine;
-//mod app;
-//mod graphics;
-////use engine::simulation::simulations::Simulations;
-//use app::running::Running;
+mod app;
 
-//use graphics::renders::render_window::mains;
-//use engine::resources::resource_loader::parser;
+
+use app::running::start_program;
+//use app::running::start_program;
+
 
 
 
 fn main() {
-    
+    start_program();
 }

@@ -6,19 +6,50 @@ use winit::{
     event_loop::{ActiveEventLoop, ControlFlow, EventLoop},
     window::{Window, WindowId},
 };
+struct WgpuState {
+    surface: wgpu::Surface<'static>,
+    device: wgpu::Device,
+    queue: wgpu::Queue,
+    config: wgpu::SurfaceConfiguration,
 
+    renderer: egui_wgpu::Renderer,
+}
 
+fn ui(ctx: &egui::Context) {
+    egui::CentralPanel::default().show(ctx, |ui| {
+        ui.heading("ArcheSimulator");
+
+        ui.label("Physics Simulator");
+
+        if ui.button("Start simulation").clicked() {
+            println!("Start!");
+        }
+
+        if ui.button("Stop simulation").clicked() {
+            println!("Stop!");
+        }
+    });
+}
 
 #[derive(Default)]
 struct App {
     window: Option<Arc<Window>>,
+
+    egui_ctx: egui::Context,
+
+    egui_state: Option<egui_winit::State>,
+
+    renderer: Option<egui_wgpu::Renderer>,
 }
 
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
         let window = Arc::new(
             event_loop
-                .create_window(Window::default_attributes())
+                .create_window(
+                    Window::default_attributes()
+                        .with_title("ArcheSimulator")
+                )
                 .unwrap(),
         );
 
@@ -32,19 +63,32 @@ impl ApplicationHandler for App {
     fn window_event(
     &mut self,
     event_loop: &ActiveEventLoop,
-    _window_id: WindowId,
+    window_id: WindowId,
     event: WindowEvent,
 ) {
+    let Some(window) = &self.window else {
+        return;
+    };
+
+    if window.id() != window_id {
+        return;
+    }
+
+    if let Some(state) = &mut self.egui_state {
+        let response = state.on_window_event(
+            window,
+            &event,
+        );
+
+        if response.consumed {
+            window.request_redraw();
+        }
+    }
     match event {
         WindowEvent::RedrawRequested => {
             println!("Window redraw requested");
-        }
-
-        WindowEvent::CloseRequested => {
-            event_loop.exit();
-        }
-
-        _ => {}
+            // 2. Отримуємо введення для egui
+           
     }
 }
 

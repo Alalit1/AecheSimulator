@@ -1,34 +1,24 @@
 use crate::engine::assets::resources::Resources;
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SceneData {
-    pub id: u64,
-    pub name: String,
-
+    pub resource: Resource,
+    
     pub size: [f32; 3],
     pub environment: EnvironmentData,
 }
 
 impl SceneData {
     pub fn new(
-        id: u64,
-        name: String,
+        resource: Resource,
         size: [f32; 3],
+        environment: EnvironmentData,
     ) -> Self {
         Self {
-            id,
-            name,
+            resource,
             size,
             environment: EnvironmentData::new(),
         }
     }
 }
 
-impl Resources for SceneData {
-    fn id(&self) -> u64 {
-        self.id
-    }
-
-    fn name(&self) -> &str {
-        &self.name
-    }
-}

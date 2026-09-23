@@ -1,6 +1,4 @@
 struct Body {
-    pub position: [f32; 3],
-    pub velocity: [f32; 3],
     pub body_data: BodyData,
 }
 

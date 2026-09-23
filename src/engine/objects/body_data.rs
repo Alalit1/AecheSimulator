@@ -1,14 +1,33 @@
 use crate::engine::assets::resources::Resources;
+use crate::engine::objects::transform::transform::Transform;
+use crate::engine::objects::collisions::collision_shape::CollisionShape;
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BodyData {
-    pub id: u64,
-    pub name: String,
-
     pub resource: Resource,
-    pub environment: EnvironmentData,
+
+    pub trasform: Transform,
+    
+    pub collision: CollisionShape,
+
+    pub body_status_data: BodyStatusData,
+ 
 }
 
-    pub position: [f32; 3] = [0.0, 0.0, 0.0],
-    pub rotation: [f32; 4] = [0.0, 0.0, 0.0, 1.0],
-    pub scale: [f32; 3] = [1.0, 1.0, 1.0],
-    pub mass: f32 = 1.0,
+impl BodyData {
+    pub fn new(
+        resource: Resource,
+        shape_type: ShapeType,
+        body_status_data: BodyStatusData,
+    ) -> Self {
+        Self {
+            resource,
+            shape_type,
+            body_status_data,
+            position: [0.0, 0.0, 0.0],
+            rotation: [0.0, 0.0, 0.0, 1.0],
+            scale: [1.0, 1.0, 1.0],
+            mass: 1.0,
+        }
+    }
+}
