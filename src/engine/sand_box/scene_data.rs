@@ -1,5 +1,6 @@
-use crate::engine::assets::resources::Resources;
-
+use crate::engine::resources::resource::Resource;
+use crate::engine::sand_box::environment::EnvironmentData;
+use serde::{Serialize,Deserialize};
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SceneData {
     pub resource: Resource,

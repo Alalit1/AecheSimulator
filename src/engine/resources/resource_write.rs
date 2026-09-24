@@ -4,8 +4,9 @@
 // зберігае (ідправляе в save) \ new_файл.рес
 use std::fs::File;
 use std::io::{Read, Write};
-use std::path::Path;
+//use std::path::Path;
 use std::error::Error;
+use crate::engine::resources::resource::Resource;
 
 
 pub fn write_resource_file(

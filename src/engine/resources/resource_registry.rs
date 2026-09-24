@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use crate::engine::resources::resource::Resource;
 
 pub struct ResourceRegistry {
     resources: HashMap<u32, Resource>,

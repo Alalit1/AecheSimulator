@@ -12,6 +12,10 @@ impl Resource {
     }
 }
 
+
+
+
+/*
 impl Resources for Resource {
     fn id(&self) -> u64 {
         self.id
@@ -20,4 +24,4 @@ impl Resources for Resource {
     fn name(&self) -> &str {
         &self.name
     }
-}
+}*/

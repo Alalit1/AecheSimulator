@@ -1,5 +1,6 @@
 use std::fs;
 use std::error::Error;
+use crate::engine::resources::resource::Resource;
 use std::path::Path;
 
 pub fn load_scene(
