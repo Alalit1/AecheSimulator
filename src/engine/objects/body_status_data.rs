@@ -1,5 +1,5 @@
-use crate::engine::assets::resources::Resources;
-
+use crate::engine::resources::resource::Resources;
+use serde::{Serialize,Deserialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BodyStatusData {

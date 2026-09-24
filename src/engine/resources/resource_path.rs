@@ -1,6 +1,7 @@
-use std::path::Path;
+use std::path::PathBuf;
 use std::error::Error;
-use rfd::FileDialog
+use std::fs;
+use rfd::FileDialog;
 use std::env;
 
 
