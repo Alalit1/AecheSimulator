@@ -13,7 +13,7 @@ pub struct BodyData {
     pub types: ObjactType,
     //pub collision: CollisionShape,
 
-    //pub body_status_data: BodyStatusData,
+    pub body_status_data: BodyStatusData,
     pub physics_model: PhysicsModel,
  
 }
